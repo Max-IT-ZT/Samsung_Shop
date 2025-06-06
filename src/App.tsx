@@ -79,7 +79,7 @@ function App() {
           const row = forecastJson.values[i];
           const name = row[0];
           forecastData[name] = {
-            forecast: headerF.map((cat, idx) => ({
+            forecast: headerF.map((cat: string, idx: number) => ({
               category: cat,
               value: row[idx + 1] || "—",
             })),
@@ -94,10 +94,12 @@ function App() {
           if (!forecastData[name]) {
             forecastData[name] = { forecast: [], share: [] };
           }
-          forecastData[name].share = headerS.map((cat, idx) => ({
-            category: cat,
-            value: row[idx + 1] || "—",
-          }));
+          forecastData[name].share = headerS.map(
+            (cat: string, idx: number) => ({
+              category: cat,
+              value: row[idx + 1] || "—",
+            })
+          );
         }
 
         // Обробка Плану
@@ -107,7 +109,7 @@ function App() {
         for (let i = 1; i < planRows.length; i++) {
           const row = planRows[i];
           const name = row[0];
-          planData[name] = headerPlan.map((cat, idx) => ({
+          planData[name] = headerPlan.map((cat: string, idx: number) => ({
             category: cat,
             value: row[idx + 1] || "—",
           }));
